@@ -26,7 +26,7 @@ step 2-4
   
  > paste following:
   
-   `{
+ >>  `{
      "default-runtime": "nvidia",
      "runtimes": {
          "nvidia": {
@@ -56,17 +56,40 @@ If you want to use a different version or library, you can edit the docker file.
 docker build -t pytorch-for-pycharm .
 ```
 
-## modifiy docker compose file
+## step 2: modify docker compose file
+
+> image (eg: pytorch-for-pycharm)
+>> You shoud check **image** name in **docker-compose.yml**
+>> Image name means docker image tag name 
+
+> service name (eg: pytorch)
+>> this name will be appear in step 3-2 (python ineterpreter setting: configure docker-compose)
+
+> environment
+>> NVIDIA_VISIBLE_DEVICES=0 means that all graphics cards will be used.
 
 
-## pycharm setting 
-### docker setting
+```yaml
+version: '2.3'
+
+services:
+  pytorch:
+    image: pytorch-for-pycharm
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0
+    command: python --version
+```
+
+
+## step 3: pycharm setting 
+### step 3-1: docker setting
 - open pycharm
 - move Preference > Build, Execution, Deploy
 
 <img src=".img/20210223_092604.jpg" width=600 height=400>
 
-### Python Interpreter setting
+### step 3-2: Python Interpreter setting
 - add new interpreter
 
 <img src=".img/20210223_093705.jpg" width=600 height=400>
