@@ -20,3 +20,5 @@ docker build -t pytorch-for-pycharm .
 
 
 ### Python Interpreter setting
+- click add 
+![interpreter setting1](.img/20210223_092705.jpg)
