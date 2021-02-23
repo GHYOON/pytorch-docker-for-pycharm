@@ -8,35 +8,44 @@ This is pytorch docker-compose repo for pycharm
 
 ### Installation step 2: nvidia toolkit (for gpu usage)
 
+step 2-1 
+
  `sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common`
+
+step 2-2
 
  `distribution=$(. /etc/os-release;echo $ID$VERSION_ID) && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list`
 
+step 2-3
+
  `sudo apt-get update && sudo apt-get install -y nvidia-container-runtime`
+
+step 2-4
 
  `sudo nano /etc/docker/daemon.json`
   
-  paste following:
+ > paste following:
   
-  `{
-    "default-runtime": "nvidia",
-    "runtimes": {
-        "nvidia": {
-            "path": "/usr/bin/nvidia-container-runtime",
-            "runtimeArgs": []
+   `{
+     "default-runtime": "nvidia",
+     "runtimes": {
+         "nvidia": {
+             "path": "/usr/bin/nvidia-container-runtime",
+             "runtimeArgs": []
+      }
      }
-    }
-  }`
+   }`
     
-    step3: restart docker daemon
+step 2-5: restart docker daemon  
     
-    `$ sudo systemctl restart docker.service`
+`sudo systemctl restart docker.service`
     
-    step4: check runtime info
+step 2-6: check runtime info
     
-    `$ docker info | grep Runtime`
+`docker info | grep Runtime`
 
 ----
+# How to use
 
 ## step 0 (optional): edit **Dockerfile**
 If you want to use a different version or library, you can edit the docker file.
