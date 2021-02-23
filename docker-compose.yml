@@ -1,0 +1,10 @@
+version: '2.3'
+
+services:
+  pytorch-123:
+#    image: anibali/pytorch:1.5.0-cuda10.2-ubuntu18.04
+    image: gihwanyoon/pytorch:1.5.0-cuda10.2-ubuntu18.04-py36
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0
+    command: python --version
