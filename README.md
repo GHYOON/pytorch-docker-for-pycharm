@@ -6,6 +6,16 @@ This is pytorch docker-compose repo for pycharm
 
 ### Installation step 1: Docker
 
+```shell
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker <your-user>
+```
+
+ Ref: https://docs.docker.com/engine/install/ubuntu/
+ 
+
+
 ### Installation step 2: nvidia toolkit (for gpu usage)
 
 step 2-1 
@@ -49,6 +59,19 @@ step 2-6: check runtime info
 
 ## step 0 (optional): edit **Dockerfile**
 If you want to use a different version or library, you can edit the docker file.
+
+```yaml
+RUN curl -sLo ~/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-py38_4.8.2-Linux-x86_64.sh \
+ && chmod +x ~/miniconda.sh \
+ && ~/miniconda.sh -b -p ~/miniconda \
+ && rm ~/miniconda.sh \
+ && conda install -y python==3.6.7 \
+ && conda clean -ya
+
+# Install pytorch and other library
+RUN conda install numpy scikit-learn scipy matplotlib
+RUN conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch && conda clean -ya
+```
 
 ## step 1: build docker container
 
