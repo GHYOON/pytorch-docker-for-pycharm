@@ -23,3 +23,7 @@ docker build -t pytorch-for-pycharm .
 - add new interpreter
 
 ![interpreter-setting1](.img/20210223_093705.jpg)
+
+
+- configure docker-compose
+![interpreter-setting2](.img/20210223_104857.jpg)
