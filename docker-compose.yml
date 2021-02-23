@@ -2,7 +2,7 @@ version: '2.3'
 
 services:
   pytorch:
-    image: pytorch:1.5.0-cuda10.2-ubuntu18.04-py36
+    image: pytorch-for-pycharm
     runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=0
