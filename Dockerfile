@@ -31,7 +31,16 @@ RUN curl -sLo ~/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-py38
  
 # Install pytorch and other library
 RUN conda install numpy scikit-learn scipy matplotlib
-RUN conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch && conda clean -ya
+RUN conda install pandas
+RUN conda install tensorflow=2.0.0
+RUN conda install keras-gpu=2.3.1
+RUN conda install jupyter notebook
+#RUN conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch && conda clean -ya
+
+# setup jupyter notebbok
+#RUN jupyter notebook --ip='0.0.0.0' --port=8888 --no-browser --allow-root
+#RUN jupyter notebook --generate-config 
+
 
 # Set the default command to python3
 CMD ["python3"]

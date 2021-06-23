@@ -119,3 +119,11 @@ services:
 
 - configure docker-compose
 <img src=".img/20210223_104857.jpg" width=600 height=400>
+
+
+
+
+## jupyter notebook
+docker-compose -f docker-compose-jupyter.yml up -d
+
+
