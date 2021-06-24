@@ -38,8 +38,9 @@ RUN conda install jupyter notebook
 #RUN conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch && conda clean -ya
 
 # setup jupyter notebbok
-#RUN jupyter notebook --ip='0.0.0.0' --port=8888 --no-browser --allow-root
-#RUN jupyter notebook --generate-config 
+RUN jupyter notebook --generate-config
+RUN cat /home/user/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.password='sha1:7ffbf21bf129:669d7a36bef2b82879328985123e9870d1737bd4'">>/home/user/.jupyter/jupyter_notebook_config.py
 
 
 # Set the default command to python3
