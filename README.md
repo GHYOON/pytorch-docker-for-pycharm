@@ -4,8 +4,10 @@ This is pytorch docker-compose repo for pycharm
 ----
 ## Installation
 
-### Installation step 1: Docker
+### Installation step 1: Docker & docker-compose
 
+
+#### Docker
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
@@ -14,7 +16,14 @@ sudo usermod -aG docker <your-user>
 
  Ref: https://docs.docker.com/engine/install/ubuntu/
  
+#### docker-compose
 
+```shell
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+```
 
 ### Installation step 2: nvidia toolkit (for gpu usage)
 
