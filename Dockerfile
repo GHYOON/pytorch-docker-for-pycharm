@@ -35,6 +35,7 @@ RUN conda install pandas
 RUN conda install tensorflow=2.0.0
 RUN conda install keras-gpu=2.3.1
 RUN conda install jupyter notebook
+RUN conda install opencv
 #RUN conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch && conda clean -ya
 
 # setup jupyter notebbok
