@@ -43,6 +43,16 @@ RUN jupyter notebook --generate-config
 RUN cat /home/user/.jupyter/jupyter_notebook_config.py
 RUN echo "c.NotebookApp.password='sha1:7ffbf21bf129:669d7a36bef2b82879328985123e9870d1737bd4'">>/home/user/.jupyter/jupyter_notebook_config.py
 
+# Install Other Python env
+RUN conda create -n py37 python=3.7
+SHELL ["/bin/bash", "--login", "-c"]
+RUN /bin/bash -c "conda init bash"
+RUN echo 'conda activate py37' >> ~/.bashrc
+RUN conda install ipykernel
+RUN python -m ipykernel install --user --name py37 --display-name py37
+RUN echo 'conda deactivate' >> ~/.bashrc
+
+
 
 # Set the default command to python3
 CMD ["python3"]
