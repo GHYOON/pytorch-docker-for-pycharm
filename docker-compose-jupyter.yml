@@ -5,7 +5,7 @@ services:
     image: pytorch-for-pycharm
     runtime: nvidia
     environment:
-      - NVIDIA_VISIBLE_DEVICES=0
+      - NVIDIA_VISIBLE_DEVICES=all
     command: jupyter notebook --ip='0.0.0.0' --port=8888 --no-browser --allow-root --notebook-dir '/jupyter-home/Jupyter_notebook'
 #tail -f /dev/null
     ports:
