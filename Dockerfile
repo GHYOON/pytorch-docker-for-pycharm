@@ -1,6 +1,9 @@
 # base image
 FROM nvidia/cuda:10.2-base-ubuntu18.04
-
+RUN apt-key del 7fa2af80
+RUN apt-key del 3bf863cc
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 RUN apt-get update && apt-get install -y \
     curl ca-certificates sudo git bzip2 \
     libx11-6 && rm -rf /var/lib/apt/lists/*
@@ -45,13 +48,16 @@ RUN cat /home/user/.jupyter/jupyter_notebook_config.py
 RUN echo "c.NotebookApp.password='sha1:7ffbf21bf129:669d7a36bef2b82879328985123e9870d1737bd4'">>/home/user/.jupyter/jupyter_notebook_config.py
 
 # Install Other Python env
-RUN conda create -n py37 python=3.7
-SHELL ["/bin/bash", "--login", "-c"]
-RUN /bin/bash -c "conda init bash"
-RUN echo 'conda activate py37' >> ~/.bashrc
-RUN conda install ipykernel
-RUN python -m ipykernel install --user --name py37 --display-name py37
-RUN echo 'conda deactivate' >> ~/.bashrc
+#RUN conda create -n py37 python=3.7
+#SHELL ["/bin/bash", "--login", "-c"]
+#RUN /bin/bash -c "conda init bash"
+#RUN echo 'conda activate py37' >> ~/.bashrc
+#RUN conda install ipykernel
+#RUN conda install tensorflow=2.1.0
+#RUN pip install tensorflow==2.2.0
+#RUN pip list |grep tensorflow
+#RUN python -m ipykernel install --user --name py37 --display-name py37
+#RUN echo 'conda deactivate' >> ~/.bashrc
 
 
 
