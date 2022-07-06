@@ -1,0 +1,27 @@
+# base image
+FROM tensorflow/tensorflow:2.5.1-gpu-jupyter
+
+RUN python --version 
+
+# setup jupyter notebbok
+RUN jupyter notebook --generate-config
+RUN cat /root/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.password='sha1:81b341c73ebf:d1778bb6a063c73cce95c7baa7d917f3b968946f'">>/root/.jupyter/jupyter_notebook_config.py
+#kier
+
+# Install pytorch and other library
+RUN pip install --upgrade pip
+RUN python --version
+RUN pip install numpy 
+RUN pip install scikit-learn 
+RUN pip install scipy 
+RUN pip install matplotlib 
+RUN pip install pandas 
+#RUN pip install google-colab
+#RUN pip install six==1.15.0
+#RUN pip install google-auth==1.6.3
+#RUN pip install prompt-toolkit==1.0.4
+RUN pip install opencv-python
+RUN pip freeze
+
+CMD ["python3"]

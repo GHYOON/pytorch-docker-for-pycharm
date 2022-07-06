@@ -45,7 +45,8 @@ RUN conda install -c conda-forge google-colab
 # setup jupyter notebbok
 RUN jupyter notebook --generate-config
 RUN cat /home/user/.jupyter/jupyter_notebook_config.py
-RUN echo "c.NotebookApp.password='sha1:7ffbf21bf129:669d7a36bef2b82879328985123e9870d1737bd4'">>/home/user/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.password='sha1:81b341c73ebf:d1778bb6a063c73cce95c7baa7d917f3b968946f'">>/home/user/.jupyter/jupyter_notebook_config.py
+#kier
 
 # Install Other Python env
 #RUN conda create -n py37 python=3.7
