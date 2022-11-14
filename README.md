@@ -86,6 +86,7 @@ RUN conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch && 
 
 ```
 docker build -t pytorch-for-pycharm .
+docker build -t tf25 -f Dockerfile_tf25 .
 ```
 
 ## step 2: modify docker compose file
